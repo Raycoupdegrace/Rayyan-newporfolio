@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    /* Horizontal-scroll guarantee: media never overflows its track. */
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  html {
+    /* Lenis drives scrolling; native smooth-scroll fights it. */
+    scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-ink-950 text-ink-50 font-sans text-fluid antialiased;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-accent-400/30 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent-400 ring-offset-2 ring-offset-ink-950;
+  }
+
+  img,
+  video,
+  svg,
+  canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Reserve the scrollbar gutter so layout doesn't shift when a route swaps height. */
+  @media (min-width: 1024px) {
+    html {
+      scrollbar-gutter: stable;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+
+  /*
+   * PERF: replaced `backdrop-blur-xl` with a solid gradient surface.
+   *
+   * `backdrop-blur` forces the browser to:
+   *   1. Rasterise everything behind the element
+   *   2. Apply a Gaussian blur to that texture
+   *   3. Composite it back on every frame during scroll / animation
+   *
+   * With ~14 card-surface instances on screen this can cost 8–15 ms per frame
+   * on mid-range hardware — enough to drop below 60 fps.
+   *
+   * The replacement uses two subtle gradients that give nearly identical visual
+   * depth at zero runtime cost.
+   */
+  .card-surface {
+    @apply relative overflow-hidden rounded-3xl border border-white/[0.08];
+    background-image:
+      linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 0%, transparent 50%, rgba(255,255,255,0.02) 100%);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.07),
+      0 24px 48px -28px rgb(0 0 0 / 0.9);
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-widest text-ink-400;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-white to-accent-300 bg-clip-text text-transparent;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent;
+  }
+}
+
+@layer utilities {
+  .grid-noise {
+    background-image: linear-gradient(
+        to right,
+        rgb(255 255 255 / 0.035) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .marquee-fade {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "portfolio-rayyan",
+  "version": "1.0.0",
+  "private": true,
+  "description": "World-Class Professional Portfolio — Muhammad Rayyan Yuwono",
+  "scripts": {
+    "dev": "next dev",
+    "dev:fast": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "preview": "next build && next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "@types/nodemailer": "^8.0.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.11.17",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.14",
+    "lucide-react": "^0.462.0",
+    "next": "^15.5.27",
+    "nodemailer": "^10.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "15.5.27",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.6.3"
+  },
+  "overrides": {
+    "postcss": "$postcss"
+  }
+}
