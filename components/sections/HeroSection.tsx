@@ -1,39 +1,36 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
-import { AuroraBackground } from '@/components/animations/AuroraBackground';
 import { SplitText } from '@/components/animations/SplitText';
-import { Magnetic } from '@/components/animations/Magnetic';
 import { Counter } from '@/components/ui/Counter';
+import { ProtectedImage } from '@/components/ui/ProtectedImage';
 import { Footer } from '@/components/layout/Footer';
 import { siteConfig } from '@/lib/site';
 import { stats } from '@/lib/achievements';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function HeroSection() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   return (
     <>
       <section className="relative min-h-svh w-full overflow-hidden">
-        <AuroraBackground />
-
-        <div className="section-shell relative z-10 flex min-h-svh flex-col justify-center pb-20 pt-28">
+        <div className="section-shell relative flex min-h-svh flex-col justify-center pb-20 pt-28">
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
             <div className="min-w-0">
-              {/* Availability chip */}
               <div className="mb-8 flex items-center gap-2.5 text-sm text-ink-400">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-400" />
-                </span>
+                <span className="h-2 w-2 rounded-full bg-accent-400" />
                 {t.hero.availability}
               </div>
 
-              {/* Typewriter headline */}
-              <h1 className="text-display-sm font-semibold tracking-[-0.03em] text-gradient">
-                <SplitText text={'Muhammad\nRayyan Yuwono'} delay={0.15} />
+              <h1 className="text-display-sm font-semibold tracking-[-0.03em] text-white">
+                <SplitText
+                  text={'Muhammad\nRayyan Yuwono'}
+                  stagger={0.08}
+                  eraseStagger={0.04}
+                  pause={1.4}
+                  delay={0.25}
+                />
               </h1>
 
               {/* Role line */}
@@ -41,36 +38,28 @@ export function HeroSection() {
                 {t.hero.role}
               </p>
 
-              {/* CTAs */}
               <div className="mt-9 flex flex-wrap items-center gap-4">
-                <Magnetic>
-                  <Link
-                    href="/projects"
-                    className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-7 py-3.5 text-base font-medium text-ink-950 shadow-[0_12px_50px_-12px_rgba(45,212,191,0.8)] transition-colors hover:bg-accent-400"
-                  >
-                    {t.hero.exploreWork}
-                    <ArrowUpRight
-                      size={18}
-                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
-                  </Link>
-                </Magnetic>
+                <Link
+                  href="/projects"
+                  className="group inline-flex min-h-11 items-center gap-2 rounded-md bg-accent-500 px-5 py-3 text-base font-medium text-ink-950 transition-colors hover:bg-accent-400"
+                >
+                  {t.hero.exploreWork}
+                  <ArrowUpRight size={18} />
+                </Link>
 
-                <Magnetic strength={6}>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-base font-medium text-white transition-colors hover:border-accent-400/60 hover:bg-white/[0.06]"
-                  >
-                    {t.hero.startProject}
-                  </Link>
-                </Magnetic>
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/20 px-5 py-3 text-base font-medium text-white transition-colors hover:border-white/50"
+                >
+                  {t.hero.startProject}
+                </Link>
               </div>
             </div>
 
             <div
-              className="relative mx-auto aspect-[4/5] w-36 overflow-hidden rounded-[2rem] border border-accent-400/20 bg-ink-900 shadow-[0_0_80px_-32px_rgba(45,212,191,0.45)] sm:w-44 lg:mx-0 lg:w-full"
+              className="relative mx-auto aspect-[4/5] w-36 overflow-hidden rounded-xl border border-white/10 bg-ink-900 sm:w-44 lg:mx-0 lg:w-full"
             >
-              <Image
+              <ProtectedImage
                 src="/profile.jpeg"
                 alt="Muhammad Rayyan Yuwono"
                 fill
@@ -89,7 +78,7 @@ export function HeroSection() {
                   {t.stats[s.labelKey as keyof (typeof t)['stats']]}
                 </dt>
                 <dd className="text-display-xs font-semibold text-white">
-                  <Counter value={s.value} suffix={s.suffix} />
+                  <Counter value={s.value} suffix={s.suffix[lang]} />
                 </dd>
               </div>
             ))}

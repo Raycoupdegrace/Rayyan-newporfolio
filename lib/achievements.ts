@@ -3,11 +3,45 @@ export interface Certification {
   issuer: string;
   year: string;
   image: string;
+  imageFit?: 'contain' | 'cover';
   accent?: boolean;
   description: { id: string; en: string };
 }
 
 export const certifications: Certification[] = [
+  {
+    name: 'Mastering Elementor: Dari Dasar Hingga Mahir',
+    issuer: 'Udemy — Pemoola Group',
+    year: '2026',
+    image: '/images/certs/udemy-mastering-elementor.png',
+    imageFit: 'contain',
+    description: {
+      id: 'Kursus Elementor dari dasar hingga mahir, dengan 25 jam materi. Diselesaikan pada 3 Juli 2026.',
+      en: 'An Elementor course from fundamentals to advanced skills, with 25 hours of content. Completed July 3, 2026.',
+    },
+  },
+  {
+    name: 'The Complete Soft Skills Course for Techies and Coders',
+    issuer: 'Udemy — Libby Seery',
+    year: '2025',
+    image: '/images/certs/udemy-soft-skills-techies.png',
+    imageFit: 'contain',
+    description: {
+      id: 'Kursus soft skills untuk profesional teknologi, dengan 8 jam materi. Diselesaikan pada 14 November 2025.',
+      en: 'A soft skills course for technology professionals, with 8 hours of content. Completed November 14, 2025.',
+    },
+  },
+  {
+    name: 'Web Design for WordPress Users',
+    issuer: 'Udemy — Andrew Williams',
+    year: '2026',
+    image: '/images/certs/udemy-wordpress-web-design.png',
+    imageFit: 'contain',
+    description: {
+      id: 'Kursus desain web untuk pengguna WordPress, mencakup 10 jam materi. Diselesaikan pada 2 Oktober 2026.',
+      en: 'A web design course for WordPress users, with 10 hours of content. Completed October 2, 2026.',
+    },
+  },
   {
     name: 'Sertifikasi Junior Web Developer',
     issuer: 'LSP (Lembaga Sertifikasi Profesi)',
@@ -19,82 +53,12 @@ export const certifications: Certification[] = [
       en: 'Competency certification for modern web development with HTML, CSS, JavaScript, and PHP. Covers responsive websites and database management.',
     },
   },
-  {
-    name: 'The Complete Web Development Bootcamp',
-    issuer: 'Udemy',
-    year: '2025',
-    image: '/images/certs/dicoding-fe.jpg',
-    description: {
-      id: 'Kursus web development lengkap dari dasar hingga full stack: HTML, CSS, JavaScript, Node.js, dan database. Diambil selama masa PKL.',
-      en: 'Complete web development course from fundamentals to full stack: HTML, CSS, JavaScript, Node.js and databases. Taken during the internship.',
-    },
-  },
-  {
-    name: 'Modern React with Redux',
-    issuer: 'Udemy',
-    year: '2025',
-    image: '/images/certs/dicoding-fe.jpg',
-    description: {
-      id: 'Kursus React modern: hooks, state management, dan pola komponen. Diambil selama masa PKL untuk memperkuat kemampuan frontend.',
-      en: 'Modern React course: hooks, state management and component patterns. Taken during the internship to strengthen frontend skills.',
-    },
-  },
-  {
-    name: 'Next.js & React — The Complete Guide',
-    issuer: 'Udemy',
-    year: '2025',
-    image: '/images/certs/dicoding-wp.jpg',
-    description: {
-      id: 'Kursus Next.js & React: routing, rendering, API routes, dan deployment produksi. Diambil selama masa PKL.',
-      en: 'Next.js & React course: routing, rendering, API routes and production deployment. Taken during the internship.',
-    },
-  },
-  {
-    name: 'WordPress Development Masterclass',
-    issuer: 'Udemy',
-    year: '2025',
-    image: '/images/certs/dicoding-wp.jpg',
-    description: {
-      id: 'Kursus pengembangan WordPress: tema kustom, plugin, dan optimasi performa situs. Diambil selama masa PKL.',
-      en: 'WordPress development course: custom themes, plugins and site performance optimisation. Taken during the internship.',
-    },
-  },
-  {
-    name: 'Web Performance Optimization',
-    issuer: 'Udemy',
-    year: '2025',
-    image: '/images/certs/lsp-jwd.jpg',
-    description: {
-      id: 'Kursus optimasi performa web: Core Web Vitals, LCP, caching, dan teknik mempercepat situs. Relevan langsung dengan pekerjaan maintenance.',
-      en: 'Web performance optimisation course: Core Web Vitals, LCP, caching and site-speed techniques. Directly relevant to maintenance work.',
-    },
-  },
-  {
-    name: 'WordPress Site Development',
-    issuer: 'Dicoding Indonesia',
-    year: '2024',
-    image: '/images/certs/dicoding-wp.jpg',
-    description: {
-      id: 'Pelatihan pengembangan website WordPress: kustomisasi tema, plugin, dan optimasi performa.',
-      en: 'WordPress website development training: theme customization, plugins, and performance optimization.',
-    },
-  },
-  {
-    name: 'Front-End Web Development',
-    issuer: 'Dicoding Indonesia',
-    year: '2024',
-    image: '/images/certs/dicoding-fe.jpg',
-    description: {
-      id: 'Pelatihan front-end dengan HTML, CSS, JavaScript, dan responsive design. Mencakup aksesibilitas web dan best practices.',
-      en: 'Front-end training with HTML, CSS, JavaScript, and responsive design. Covers web accessibility and best practices.',
-    },
-  },
 ];
 
 export const stats = [
   { labelKey: 'experience', value: 1, suffix: { id: '+ Tahun', en: '+ Year' } },
   { labelKey: 'projects', value: 5, suffix: { id: '+', en: '+' } },
-  { labelKey: 'certifications', value: 8, suffix: { id: '', en: '' } },
+  { labelKey: 'certifications', value: 4, suffix: { id: '', en: '' } },
   { labelKey: 'lighthouse', value: 96, suffix: { id: '', en: '' } },
 ] as const;
 

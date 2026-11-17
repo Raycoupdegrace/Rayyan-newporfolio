@@ -6,26 +6,25 @@ import { cn } from '@/lib/utils';
 type SplitTextProps = {
   text: string;
   className?: string;
-  /** Seconds between typed characters. */
+  /** Seconds between character changes while typing. */
   stagger?: number;
+  /** Seconds between character changes while erasing. */
+  eraseStagger?: number;
+  /** Pause after completing or clearing the text. */
+  pause?: number;
   delay?: number;
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
 };
 
 /**
- * SplitText — type-once reveal.
- *
- * PERF: an earlier version looped (type → erase → retype forever), which meant
- * a `setState` every ~60 ms for the entire session. Because this sits in the
- * hero, that re-rendered the whole hero subtree on a timer and kept the main
- * thread busy. It now types once and stops; the full text stays put.
- *
- * Also short-circuits to the final string for `prefers-reduced-motion`.
+ * Loops a type-and-erase reveal. Reduced-motion preferences show the full text.
  */
 export function SplitText({
   text,
   className,
-  stagger = 0.06,
+  stagger = 0.1,
+  eraseStagger = 0.045,
+  pause = 1.2,
   delay = 0,
   as: Tag = 'span',
 }: SplitTextProps) {
@@ -40,20 +39,36 @@ export function SplitText({
     }
 
     let visible = 0;
+    let deleting = false;
     let timeout: ReturnType<typeof setTimeout>;
 
     const step = () => {
-      visible += 1;
+      if (!deleting) {
+        visible += 1;
+      } else {
+        visible -= 1;
+      }
+
       setVisibleCharacters(visible);
-      if (visible < characterCount) {
-        timeout = setTimeout(step, stagger * 1000);
+
+      if (!deleting && visible === characterCount) {
+        deleting = true;
+        timeout = setTimeout(step, pause * 1000);
+      } else if (deleting && visible === 0) {
+        deleting = false;
+        timeout = setTimeout(step, pause * 1000);
+      } else {
+        timeout = setTimeout(
+          step,
+          (deleting ? eraseStagger : stagger) * 1000,
+        );
       }
     };
 
     setVisibleCharacters(0);
     timeout = setTimeout(step, delay * 1000);
     return () => clearTimeout(timeout);
-  }, [delay, stagger, text]);
+  }, [delay, eraseStagger, pause, stagger, text]);
 
   const visibleText = characters.slice(0, visibleCharacters).join('');
   const [firstLine = '', ...remainingLines] = visibleText.split('\n');
@@ -63,7 +78,6 @@ export function SplitText({
   const secondLineAccent = separator < 0 ? '' : secondLine.slice(separator);
   const fullSecondLine = text.split('\n').slice(1).join(' ');
   const accessibleText = text.replace(/\n/g, ' ');
-  const isTyping = visibleCharacters < characters.length;
 
   return (
     <Tag className={cn('inline-block', className)} aria-label={accessibleText}>
@@ -76,18 +90,14 @@ export function SplitText({
             <span className="whitespace-nowrap">
               {secondLineName}
               {separator >= 0 && (
-                <span className="text-ink-400">{secondLineAccent}</span>
+                <span className="text-white">{secondLineAccent}</span>
               )}
-              {isTyping && (
-                <span className="ml-1 inline-block h-[0.8em] w-[0.07em] translate-y-[0.08em] rounded-sm bg-accent-300 animate-pulse" />
-              )}
+              <span className="ml-1 inline-block h-[0.8em] w-[0.07em] translate-y-[0.08em] rounded-sm bg-accent-300 animate-pulse" />
             </span>
           </>
         ) : (
           <>
-            {isTyping && (
-              <span className="ml-1 inline-block h-[0.8em] w-[0.07em] translate-y-[0.08em] rounded-sm bg-accent-300 animate-pulse" />
-            )}
+            <span className="ml-1 inline-block h-[0.8em] w-[0.07em] translate-y-[0.08em] rounded-sm bg-accent-300 animate-pulse" />
             <br />
             <span className="invisible whitespace-nowrap">{fullSecondLine}</span>
           </>

@@ -70,18 +70,30 @@ export function Footer() {
             {t.footer.elsewhere}
           </h3>
           <div className="flex flex-wrap gap-2.5">
-            {socials.map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-ink-200 transition-colors hover:border-accent-400/50 hover:text-accent-300"
-                aria-label={label}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <Icon size={18} />
-              </a>
-            ))}
+            {socials.map(({ href, label, Icon }) =>
+              href.trim() ? (
+                <a
+                  key={label}
+                  href={href}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-ink-200 transition-colors hover:border-accent-400/50 hover:text-accent-300"
+                  aria-label={label}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Icon size={18} />
+                </a>
+              ) : (
+                <span
+                  key={label}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-ink-200"
+                  role="img"
+                  aria-label={`${label} link belum diatur`}
+                  title={`${label} link belum diatur`}
+                >
+                  <Icon size={18} />
+                </span>
+              ),
+            )}
           </div>
           <div className="flex flex-col gap-2">
             <a

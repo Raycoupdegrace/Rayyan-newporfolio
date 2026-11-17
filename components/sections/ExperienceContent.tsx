@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { Reveal, revealItem } from '@/components/animations/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Badge } from '@/components/ui/Badge';
+import { ProtectedImage } from '@/components/ui/ProtectedImage';
 import { experiences } from '@/lib/experience';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
@@ -42,7 +42,7 @@ export function ExperienceContent() {
                 <div className="flex items-start gap-3">
                   {exp.logo ? (
                     <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl border border-white/10 bg-white p-1.5">
-                      <Image
+                      <ProtectedImage
                         src={exp.logo}
                         alt={`${exp.company} logo`}
                         width={40}

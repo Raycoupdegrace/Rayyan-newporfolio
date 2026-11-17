@@ -7,7 +7,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navigation, siteConfig } from '@/lib/site';
 import { cn } from '@/lib/utils';
-import { Magnetic } from '@/components/animations/Magnetic';
 import { LanguageToggle } from '@/components/layout/LanguageToggle';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
@@ -70,15 +69,11 @@ export function Navbar() {
       <nav className="section-shell flex h-16 items-center justify-between sm:h-18">
         <Link
           href="/"
-          className="group flex items-center gap-2.5 text-sm font-semibold tracking-tight"
+          className="group min-w-0 text-[11px] font-semibold tracking-tight text-ink-100 sm:text-sm"
           aria-label={`${siteConfig.name} — home`}
         >
-          <span className="grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-xs font-bold text-accent-300">
-            RY
-          </span>
-          <span className="hidden text-ink-200 transition-colors group-hover:text-white sm:inline">
-            {siteConfig.shortName}
-            <span className="text-accent-400">.</span>
+          <span className="whitespace-nowrap transition-colors group-hover:text-white">
+            {siteConfig.name}
           </span>
         </Link>
 
@@ -116,19 +111,17 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <LanguageToggle className="hidden sm:inline-flex" />
-          <Magnetic className="hidden sm:inline-flex" strength={8}>
-            <Link
-              href="/contact"
-              className="rounded-full border border-accent-400/40 bg-accent-400/10 px-4 py-2 text-sm font-medium text-accent-300 transition-colors hover:bg-accent-400/20"
-            >
-              {lang === 'id' ? 'Ngobrol' : "Let's talk"}
-            </Link>
-          </Magnetic>
+          <Link
+            href="/contact"
+            className="hidden rounded-md border border-white/15 px-4 py-2 text-sm font-medium text-ink-200 transition-colors hover:border-accent-400/50 hover:text-white sm:inline-flex"
+          >
+            {lang === 'id' ? 'Ngobrol' : "Let's talk"}
+          </Link>
 
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white lg:hidden"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
           >
@@ -144,7 +137,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="border-t border-white/[0.08] bg-ink-950/[0.98] lg:hidden"
           >
             <ul className="section-shell flex flex-col py-4">

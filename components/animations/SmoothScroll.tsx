@@ -17,10 +17,11 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     const prefersReduced = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
-    if (prefersReduced) return;
+    const usesCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    if (prefersReduced || usesCoarsePointer) return;
 
     const lenis = new Lenis({
-      duration: 1.05,
+      duration: 0.65,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1,

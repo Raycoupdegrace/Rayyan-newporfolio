@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowUpRight, Github, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Reveal, RevealGroup, revealItem } from '@/components/animations/Reveal';
@@ -13,6 +12,7 @@ import { projects, projectCategories } from '@/lib/projects';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { categoryKeyByValue } from '@/lib/i18n';
+import { ProtectedImage } from '@/components/ui/ProtectedImage';
 
 export function ProjectsContent() {
   const [active, setActive] = useState<string>('All');
@@ -74,7 +74,7 @@ export function ProjectsContent() {
                 <div className="card-surface group flex h-full flex-col p-5 transition-colors hover:border-white/16">
                   {/* Image slot */}
                   <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
-                    <Image
+                    <ProtectedImage
                       src={p.image}
                       alt={p.title}
                       fill
@@ -86,7 +86,7 @@ export function ProjectsContent() {
                           href={p.links.liveDemo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-ink-950/80 text-white opacity-0 transition-all duration-300 group-hover:opacity-100"
+                          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-ink-950/80 text-white opacity-100 transition-opacity duration-150 sm:h-9 sm:w-9 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
                           aria-label="Live Demo"
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -98,7 +98,7 @@ export function ProjectsContent() {
                           href={p.links.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-ink-950/80 text-white opacity-0 transition-all duration-300 group-hover:opacity-100"
+                          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-ink-950/80 text-white opacity-100 transition-opacity duration-150 sm:h-9 sm:w-9 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
                           aria-label="GitHub"
                           onClick={(e) => e.stopPropagation()}
                         >

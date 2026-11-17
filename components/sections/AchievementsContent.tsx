@@ -1,10 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import { Reveal } from '@/components/animations/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { DragCarousel } from '@/components/ui/DragCarousel';
 import { Counter } from '@/components/ui/Counter';
+import { ProtectedImage } from '@/components/ui/ProtectedImage';
 import { certifications, stats } from '@/lib/achievements';
 import { Badge } from '@/components/ui/Badge';
 import { MousePointer2, MoveHorizontal, Award } from 'lucide-react';
@@ -54,13 +54,19 @@ export function AchievementsContent() {
                 key={`${c.name}-${c.year}`}
                 className="card-surface mr-4 flex w-[260px] shrink-0 flex-col gap-3 p-3 sm:w-[300px]"
               >
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
-                  <Image
+                <div
+                  className={`relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/[0.08] ${
+                    c.imageFit === 'contain' ? 'bg-white' : 'bg-white/[0.03]'
+                  }`}
+                >
+                  <ProtectedImage
                     src={c.image}
                     alt={c.name}
                     fill
                     sizes="300px"
-                    className="object-cover"
+                    className={
+                      c.imageFit === 'contain' ? 'object-contain' : 'object-cover'
+                    }
                   />
                   <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full border border-white/10 bg-ink-950/80 px-2 py-0.5 text-[10px] font-medium text-ink-200">
                     <Award size={11} className="text-accent-300" />
