@@ -15,35 +15,48 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'ecommerce-toko-buku-lsp',
-    image: '/images/projects/ecommerce-toko-buku.jpg',
-    title: 'E-Commerce Toko Buku (LSP)',
+    slug: 'raybookstore',
+    image: '/images/projects/book-store-rayyan-storefront.jpg',
+    title: 'RayBookstore — Toko Buku Online',
     description: {
-      id: 'Proyek tugas akhir sertifikasi LSP: website toko buku online dengan fitur keranjang, checkout, dan manajemen produk menggunakan PHP & MySQL.',
-      en: 'LSP certification final project: online bookstore website with cart, checkout, and product management features using PHP & MySQL.',
+      id: 'Aplikasi toko buku yang saya kembangkan dengan Laravel. Fitur mencakup katalog dan pencarian buku, keranjang, checkout, serta panel administrasi.',
+      en: 'A Laravel bookstore application I built, with a book catalog and search, cart, checkout, and an admin dashboard.',
     },
-    techStack: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
-    year: 2025,
+    techStack: ['Laravel', 'PHP', 'MySQL', 'Blade', 'Tailwind CSS'],
+    year: 2026,
     category: 'E-Commerce',
     links: {
-      liveDemo: 'https://github.com/muhammadrayyan/ecommerce-toko-buku',
-      github: 'https://github.com/muhammadrayyan/ecommerce-toko-buku',
+      github: 'https://github.com/Raycoupdegrace/book-store-rayyan',
     },
   },
   {
-    slug: 'multiprima-indosejahtera-wordpress',
-    image: '/images/projects/multiprima-wordpress.jpg',
-    title: 'Multiprima Indosejahtera (WordPress/Magang)',
+    slug: 'multiprima-indosejahtera',
+    image: '/images/projects/multiprima-site.jpg',
+    title: 'Multiprima Indosejahtera',
     description: {
-      id: 'Proyek magang: membangun dan mengelola website perusahaan Multiprima Indosejahtera menggunakan WordPress dengan tema kustom dan plugin.',
-      en: 'Internship project: building and managing Multiprima Indosejahtera company website using WordPress with custom theme and plugins.',
+      id: 'Pengembangan dan pengelolaan website perusahaan Multiprima Indosejahtera selama magang. Situs yang aktif saat ini dibuat dengan Wix.',
+      en: 'Developed and maintained the Multiprima Indosejahtera company website during my internship. The currently live site is built with Wix.',
     },
-    techStack: ['WordPress', 'Elementor', 'CSS', 'PHP'],
+    techStack: ['Wix'],
     year: 2024,
+    category: 'Wix',
+    links: {
+      liveDemo: 'https://www.multiprima.co.id/beranda',
+    },
+  },
+  {
+    slug: 'millenia-group',
+    image: '/images/projects/millenia-group-site.jpg',
+    title: 'Millenia Group',
+    description: {
+      id: 'Website profil perusahaan dan layanan Millenia Group yang saya kembangkan dengan WordPress dan Elementor.',
+      en: 'A company profile and services website for Millenia Group that I developed with WordPress and Elementor.',
+    },
+    techStack: ['WordPress', 'Elementor'],
+    year: 2026,
     category: 'WordPress',
     links: {
-      liveDemo: 'https://multiprimaindosejahtera.com',
-      github: 'https://github.com/muhammadrayyan/multiprima-wordpress',
+      liveDemo: 'https://milleniagroup.id/',
     },
   },
   {

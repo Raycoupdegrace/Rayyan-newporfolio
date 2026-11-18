@@ -75,18 +75,18 @@ export const experiences: Experience[] = [
     location: { id: 'Indonesia', en: 'Indonesia' },
     current: false,
     summary: {
-      id: 'Menempuh pendidikan kejuruan SIJA: mempelajari dasar pemrograman, jaringan, dan pengembangan aplikasi web melalui proyek nyata, tugas sekolah, dan sertifikasi LSP.',
-      en: 'Vocational education in SIJA: learning programming fundamentals, networking and web application development through real projects, school assignments and LSP certification.',
+      id: 'Menempuh pendidikan kejuruan SIJA: mempelajari dasar pemrograman, jaringan, dan pengembangan aplikasi web melalui proyek nyata, tugas sekolah, dan praktik industri.',
+      en: 'Vocational education in SIJA: learning programming fundamentals, networking and web application development through real projects, school assignments and industry practice.',
     },
     highlights: {
       id: [
         'Mengerjakan proyek web nyata sebagai bagian dari tugas & praktik sekolah.',
-        'Lulus sertifikasi kompetensi Junior Web Developer (LSP) 2025.',
+        'Menerapkan kompetensi pengembangan web dalam proyek dan praktik pembelajaran.',
         'Menjalani PKL di industri branding & teknologi.',
       ],
       en: [
         'Shipped real web projects as part of school assignments & practice.',
-        'Passed the Junior Web Developer competency certification (LSP) 2025.',
+        'Applied web development skills in projects and practical coursework.',
         'Completed an industrial internship (PKL) in branding & technology.',
       ],
     },

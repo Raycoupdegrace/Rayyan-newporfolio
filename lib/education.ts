@@ -26,12 +26,12 @@ export const education: Education[] = [
     highlights: {
       id: [
         'Praktik langsung pengembangan web: HTML, CSS, JavaScript, PHP, dan MySQL.',
-        'Lulus sertifikasi kompetensi Junior Web Developer (LSP) pada 2025.',
+        'Mempelajari siklus pengembangan web dari perancangan antarmuka hingga pengelolaan database.',
         'Menjalani Praktik Kerja Lapangan (PKL) di industri branding & teknologi.',
       ],
       en: [
         'Hands-on web development practice: HTML, CSS, JavaScript, PHP and MySQL.',
-        'Passed the Junior Web Developer competency certification (LSP) in 2025.',
+        'Studied the web development lifecycle, from interface design through database management.',
         'Completed an industrial internship (PKL) in the branding & technology sector.',
       ],
     },

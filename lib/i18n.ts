@@ -16,7 +16,7 @@ export type TranslationShape = {
   experience: { eyebrow: string; title: string; description: string };
   contact: { eyebrow: string; title: string; description: string; whatToInclude: string; include1: string; include2: string; include3: string; name: string; namePlaceholder: string; email: string; emailPlaceholder: string; message: string; messagePlaceholder: string; send: string; sending: string; success: string; emailReady: string; error: string };
   projectDetail: { back: string; heroMedia: string; p1: string; p2: string; techUsed: string; category: string; year: string; link: string };
-  categories: { all: string; ecommerce: string; wordpress: string; application: string };
+  categories: { all: string; ecommerce: string; wordpress: string; application: string; wix: string };
   siteRole: string;
   footer: { description: string; navigate: string; elsewhere: string; rights: string; backToTop: string };
 };
@@ -34,7 +34,7 @@ export const translations: Record<Language, TranslationShape> = {
     projects: {
       eyebrow: 'Proyek',
       title: 'Karya terpilih dari sekolah & magang.',
-      description: 'Proyek nyata dari tugas sekolah, sertifikasi LSP, dan pengalaman magang. Setiap proyek mencakup teknologi yang digunakan dan hasil yang dicapai.',
+      description: 'Proyek nyata dari tugas sekolah, proyek mandiri, dan pengalaman magang. Setiap proyek mencantumkan teknologi yang digunakan.',
     },
     achievements: {
       eyebrow: 'Pencapaian',
@@ -101,7 +101,7 @@ export const translations: Record<Language, TranslationShape> = {
       year: 'Tahun',
       link: 'Tautan',
     },
-    categories: { all: 'Semua', ecommerce: 'E-Commerce', wordpress: 'WordPress', application: 'Aplikasi' },
+    categories: { all: 'Semua', ecommerce: 'E-Commerce', wordpress: 'WordPress', application: 'Aplikasi', wix: 'Wix' },
     siteRole: 'Junior Full Stack Developer & Arsitek WordPress',
     footer: {
       description: 'Membangun web yang cepat, accessible, dan mudah dikelola dari arsitektur hingga interaksi.',
@@ -123,7 +123,7 @@ export const translations: Record<Language, TranslationShape> = {
     projects: {
       eyebrow: 'Projects',
       title: 'Selected work from school & internship.',
-      description: 'Real projects from school assignments, LSP certification, and internship experience. Each project includes the technologies used and results achieved.',
+      description: 'Real work from school assignments, independent projects, and internship experience. Each project lists the technologies used.',
     },
     achievements: {
       eyebrow: 'Achievements',
@@ -190,7 +190,7 @@ export const translations: Record<Language, TranslationShape> = {
       year: 'Year',
       link: 'Link',
     },
-    categories: { all: 'All', ecommerce: 'E-Commerce', wordpress: 'WordPress', application: 'Application' },
+    categories: { all: 'All', ecommerce: 'E-Commerce', wordpress: 'WordPress', application: 'Application', wix: 'Wix' },
     siteRole: 'Junior Full Stack Developer & WordPress Architect',
     footer: {
       description: 'Building fast, accessible, maintainable web ecosystems from architecture to interaction.',
@@ -218,4 +218,5 @@ export const categoryKeyByValue: Record<string, keyof TranslationShape['categori
   'E-Commerce': 'ecommerce',
   'WordPress': 'wordpress',
   'Application': 'application',
+  'Wix': 'wix',
 };

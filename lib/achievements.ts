@@ -42,23 +42,12 @@ export const certifications: Certification[] = [
       en: 'A web design course for WordPress users, with 10 hours of content. Completed October 2, 2026.',
     },
   },
-  {
-    name: 'Sertifikasi Junior Web Developer',
-    issuer: 'LSP (Lembaga Sertifikasi Profesi)',
-    year: '2025',
-    image: '/images/certs/lsp-jwd.jpg',
-    accent: true,
-    description: {
-      id: 'Sertifikasi kompetensi pengembangan website modern dengan HTML, CSS, JavaScript, dan PHP. Mencakup pembuatan website responsif dan manajemen database.',
-      en: 'Competency certification for modern web development with HTML, CSS, JavaScript, and PHP. Covers responsive websites and database management.',
-    },
-  },
 ];
 
 export const stats = [
   { labelKey: 'experience', value: 1, suffix: { id: '+ Tahun', en: '+ Year' } },
-  { labelKey: 'projects', value: 5, suffix: { id: '+', en: '+' } },
-  { labelKey: 'certifications', value: 4, suffix: { id: '', en: '' } },
+  { labelKey: 'projects', value: 6, suffix: { id: '+', en: '+' } },
+  { labelKey: 'certifications', value: 3, suffix: { id: '', en: '' } },
   { labelKey: 'lighthouse', value: 96, suffix: { id: '', en: '' } },
 ] as const;
 
