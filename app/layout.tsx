@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { pageview } from '@/lib/analytics';
 import { SmoothScroll } from '@/components/animations/SmoothScroll';
 import { LanguageProvider } from '@/components/providers/LanguageProvider';
+import { PortfolioChat } from '@/components/ui/PortfolioChat';
 import { siteConfig } from '@/lib/site';
 import './globals.css';
 
@@ -84,6 +85,7 @@ export default function RootLayout({
               Skip to content
             </a>
             {children}
+            <PortfolioChat />
           </LanguageProvider>
         </SmoothScroll>
       </body>
