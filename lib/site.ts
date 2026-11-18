@@ -12,10 +12,10 @@ export const siteConfig = {
   location: 'Indonesia (Remote / Global)',
   availability: 'Open to junior freelance & contract engagements — Q3 2026 onwards.', // will be overridden by i18n
   social: {
-    github: '',
-    linkedin: '',
-    telegram: '',
-    instagram: '',
+    github: 'https://github.com/Raycoupdegrace',
+    linkedin: 'https://www.linkedin.com/in/muhammad-rayyan-b28118351',
+    telegram: 'https://t.me/+6285648361572',
+    instagram: 'https://www.instagram.com/rayynn._com',
     whatsapp: '',
   },
 } as const;
