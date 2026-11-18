@@ -8,6 +8,7 @@ import { Reveal, RevealGroup, revealItem } from '@/components/animations/Reveal'
 import { TiltCard } from '@/components/animations/TiltCard';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { categoryKeyByValue } from '@/lib/i18n';
+import { ProtectedImage } from '@/components/ui/ProtectedImage';
 
 type Props = {
   project: Project;
@@ -49,13 +50,15 @@ export function ProjectDetail({ project }: Props) {
       <Reveal>
         <TiltCard className="w-full">
           <div className="card-surface relative aspect-video w-full overflow-hidden rounded-3xl border border-white/[0.08]">
-            <div className="absolute inset-0 grid-noise opacity-40" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
-              <span className="text-6xl font-bold text-white/10 sm:text-8xl">
-                {project.category.slice(0, 2).toUpperCase()}
-              </span>
-              <p className="text-ink-400">{d.heroMedia}</p>
-            </div>
+            <ProtectedImage
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="100vw"
+              className={
+                project.imageFit === 'contain' ? 'object-contain' : 'object-cover'
+              }
+            />
           </div>
         </TiltCard>
       </Reveal>
@@ -66,16 +69,20 @@ export function ProjectDetail({ project }: Props) {
           <p>{d.p1.replace('{category}', categoryLabel)}</p>
           <p>{d.p2}</p>
 
-          <h2 className="mt-4 text-display-xs font-semibold text-white">
-            {d.techUsed}
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {project.techStack.map((tech) => (
-              <Badge key={tech} tone="accent">
-                {tech}
-              </Badge>
-            ))}
-          </div>
+          {project.techStack.length > 0 && (
+            <>
+              <h2 className="mt-4 text-display-xs font-semibold text-white">
+                {d.techUsed}
+              </h2>
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech) => (
+                  <Badge key={tech} tone="accent">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </>
+          )}
         </Reveal>
 
         {/* Meta card */}
@@ -91,35 +98,39 @@ export function ProjectDetail({ project }: Props) {
             </h2>
             <p className="mt-2 text-ink-200">{project.year}</p>
 
-            <h2 className="mt-8 text-sm font-semibold uppercase tracking-widest text-ink-400">
-              {d.link}
-            </h2>
-            <ul className="mt-2 flex flex-wrap gap-2 text-sm">
-              {project.links.liveDemo && (
-                <li>
-                  <a
-                    href={project.links.liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent-300 hover:underline"
-                  >
-                    Live Demo →
-                  </a>
-                </li>
-              )}
-              {project.links.github && (
-                <li>
-                  <a
-                    href={project.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent-300 hover:underline"
-                  >
-                    GitHub →
-                  </a>
-                </li>
-              )}
-            </ul>
+            {(project.links.liveDemo || project.links.github) && (
+              <>
+                <h2 className="mt-8 text-sm font-semibold uppercase tracking-widest text-ink-400">
+                  {d.link}
+                </h2>
+                <ul className="mt-2 flex flex-wrap gap-2 text-sm">
+                  {project.links.liveDemo && (
+                    <li>
+                      <a
+                        href={project.links.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent-300 hover:underline"
+                      >
+                        Live Demo →
+                      </a>
+                    </li>
+                  )}
+                  {project.links.github && (
+                    <li>
+                      <a
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent-300 hover:underline"
+                      >
+                        GitHub →
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </>
+            )}
           </div>
         </Reveal>
       </div>

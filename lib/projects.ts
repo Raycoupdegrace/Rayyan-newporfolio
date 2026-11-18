@@ -1,6 +1,7 @@
 export interface Project {
   slug: string;
   image: string;
+  imageFit?: 'contain' | 'cover';
   title: string;
   description: { id: string; en: string };
   techStack: string[];
@@ -60,6 +61,34 @@ export const projects: Project[] = [
       liveDemo: 'https://github.com/muhammadrayyan/kuis-edukasi-pkk',
       github: 'https://github.com/muhammadrayyan/kuis-edukasi-pkk',
     },
+  },
+  {
+    slug: 'joki-rank-diamond',
+    image: '/images/projects/joki-rank-diamond.png',
+    imageFit: 'contain',
+    title: 'Joki Rank & Diamond — Joki Rayyan Point Store',
+    description: {
+      id: 'Landing page promosi layanan joki rank dan top-up diamond Mobile Legends, dengan informasi layanan, skin terbaru, dan ajakan pemesanan.',
+      en: 'A promotional landing page for Mobile Legends rank-boosting and diamond top-ups, featuring service details, featured skins, and calls to order.',
+    },
+    techStack: [],
+    year: 2026,
+    category: 'Application',
+    links: {},
+  },
+  {
+    slug: 'ray-killing-chess',
+    image: '/images/projects/ray-killing-chess.png',
+    imageFit: 'contain',
+    title: 'Ray Killing Chess',
+    description: {
+      id: 'Game catur berbasis web dengan papan interaktif, tombol permainan baru, fitur balik papan, dan opsi lawan AI.',
+      en: 'A web-based chess game with an interactive board, new-game control, board-flip option, and an AI opponent toggle.',
+    },
+    techStack: [],
+    year: 2026,
+    category: 'Application',
+    links: {},
   },
 ] as const;
 

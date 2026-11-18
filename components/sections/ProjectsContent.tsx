@@ -78,7 +78,9 @@ export function ProjectsContent() {
                       src={p.image}
                       alt={p.title}
                       fill
-                      className="object-cover"
+                      className={
+                        p.imageFit === 'contain' ? 'object-contain' : 'object-cover'
+                      }
                     />
                     <div className="absolute right-3 top-3 flex gap-2">
                       {p.links.liveDemo && (
@@ -120,18 +122,20 @@ export function ProjectsContent() {
                     {p.description[lang]}
                   </p>
 
-                  <ul className="mt-auto flex flex-wrap gap-2 pt-5">
-                    {p.techStack.slice(0, 3).map((tech) => (
-                      <li key={tech} className="text-xs text-ink-200">
-                        {tech}
-                      </li>
-                    ))}
-                    {p.techStack.length > 3 && (
-                      <li className="text-xs text-ink-400">
-                        +{p.techStack.length - 3}
-                      </li>
-                    )}
-                  </ul>
+                  {p.techStack.length > 0 && (
+                    <ul className="mt-auto flex flex-wrap gap-2 pt-5">
+                      {p.techStack.slice(0, 3).map((tech) => (
+                        <li key={tech} className="text-xs text-ink-200">
+                          {tech}
+                        </li>
+                      ))}
+                      {p.techStack.length > 3 && (
+                        <li className="text-xs text-ink-400">
+                          +{p.techStack.length - 3}
+                        </li>
+                      )}
+                    </ul>
+                  )}
                 </div>
               </TiltCard>
             </motion.div>
