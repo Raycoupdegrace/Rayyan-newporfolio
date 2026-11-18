@@ -60,19 +60,18 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: 'kuis-edukasi-interaktif-pkk',
-    image: '/images/projects/kuis-edukasi-pkk.jpg',
-    title: 'Kuis Edukasi Interaktif PKK',
+    slug: 'sejarah-masyumi',
+    image: '/images/projects/sejarah-masyumi.png',
+    title: 'Sejarah Masyumi — Sejarah Bangsa',
     description: {
-      id: 'Proyek mata pelajaran PKK: kuis edukasi interaktif berbasis web dengan sistem penilaian otomatis dan tampilan responsif.',
-      en: 'PKK subject project: interactive web-based educational quiz with automatic scoring system and responsive design.',
+      id: 'Situs edukasi sejarah interaktif tentang Masyumi, dengan ringkasan sejarah, tokoh, statistik, visi dan misi, aliansi politik, warisan, serta kuis.',
+      en: 'An interactive educational site on Masyumi history, with historical context, figures, statistics, vision and mission, political alliances, legacy, and a quiz.',
     },
-    techStack: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
-    year: 2024,
-    category: 'Application',
+    techStack: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
+    year: 2025,
+    category: 'History',
     links: {
-      liveDemo: 'https://github.com/muhammadrayyan/kuis-edukasi-pkk',
-      github: 'https://github.com/muhammadrayyan/kuis-edukasi-pkk',
+      github: 'https://github.com/imrynDev/sejarahmasyumi',
     },
   },
   {

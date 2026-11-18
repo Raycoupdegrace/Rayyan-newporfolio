@@ -16,7 +16,7 @@ export type TranslationShape = {
   experience: { eyebrow: string; title: string; description: string };
   contact: { eyebrow: string; title: string; description: string; whatToInclude: string; include1: string; include2: string; include3: string; name: string; namePlaceholder: string; email: string; emailPlaceholder: string; message: string; messagePlaceholder: string; send: string; sending: string; success: string; emailReady: string; error: string };
   projectDetail: { back: string; heroMedia: string; p1: string; p2: string; techUsed: string; category: string; year: string; link: string };
-  categories: { all: string; ecommerce: string; wordpress: string; application: string; wix: string };
+  categories: { all: string; ecommerce: string; wordpress: string; application: string; wix: string; history: string };
   siteRole: string;
   footer: { description: string; navigate: string; elsewhere: string; rights: string; backToTop: string };
 };
@@ -101,7 +101,7 @@ export const translations: Record<Language, TranslationShape> = {
       year: 'Tahun',
       link: 'Tautan',
     },
-    categories: { all: 'Semua', ecommerce: 'E-Commerce', wordpress: 'WordPress', application: 'Aplikasi', wix: 'Wix' },
+    categories: { all: 'Semua', ecommerce: 'E-Commerce', wordpress: 'WordPress', application: 'Aplikasi', wix: 'Wix', history: 'Sejarah' },
     siteRole: 'Junior Full Stack Developer & Arsitek WordPress',
     footer: {
       description: 'Membangun web yang cepat, accessible, dan mudah dikelola dari arsitektur hingga interaksi.',
@@ -190,7 +190,7 @@ export const translations: Record<Language, TranslationShape> = {
       year: 'Year',
       link: 'Link',
     },
-    categories: { all: 'All', ecommerce: 'E-Commerce', wordpress: 'WordPress', application: 'Application', wix: 'Wix' },
+    categories: { all: 'All', ecommerce: 'E-Commerce', wordpress: 'WordPress', application: 'Application', wix: 'Wix', history: 'History' },
     siteRole: 'Junior Full Stack Developer & WordPress Architect',
     footer: {
       description: 'Building fast, accessible, maintainable web ecosystems from architecture to interaction.',
@@ -219,4 +219,5 @@ export const categoryKeyByValue: Record<string, keyof TranslationShape['categori
   'WordPress': 'wordpress',
   'Application': 'application',
   'Wix': 'wix',
+  'History': 'history',
 };
