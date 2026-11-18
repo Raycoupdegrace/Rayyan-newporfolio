@@ -54,22 +54,60 @@ export function DragCarousel({
     ro.observe(track);
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let isInViewport = false;
+    let isActive = false;
+
+    const renderTrack = () => {
+      if (s.half > 0) {
+        while (s.offset <= -s.half) s.offset += s.half;
+        while (s.offset > 0) s.offset -= s.half;
+      }
+      track.style.transform = `translate3d(${s.offset}px,0,0)`;
+    };
 
     const tick = () => {
+      s.raf = 0;
+      if (!isActive) return;
       if (!s.dragging) {
         s.offset -= speed;
         s.offset -= s.velocity;
         s.velocity *= 0.94;
         if (Math.abs(s.velocity) < 0.01) s.velocity = 0;
       }
-      if (s.half > 0) {
-        while (s.offset <= -s.half) s.offset += s.half;
-        while (s.offset > 0) s.offset -= s.half;
-      }
-      track.style.transform = `translate3d(${s.offset}px,0,0)`;
+      renderTrack();
       s.raf = requestAnimationFrame(tick);
     };
-    if (!reduce) s.raf = requestAnimationFrame(tick);
+
+    const updateActivity = () => {
+      const shouldRun = !reduce && isInViewport && !document.hidden;
+      if (isActive === shouldRun) return;
+      isActive = shouldRun;
+      if (isActive) {
+        s.raf = requestAnimationFrame(tick);
+      } else if (s.raf) {
+        cancelAnimationFrame(s.raf);
+        s.raf = 0;
+      }
+    };
+
+    const io =
+      typeof IntersectionObserver === 'undefined'
+        ? undefined
+        : new IntersectionObserver(
+            (entries) => {
+              isInViewport = entries.some((entry) => entry.isIntersecting);
+              updateActivity();
+            },
+            { rootMargin: '120px 0px' },
+          );
+    if (io) {
+      io.observe(wrap);
+    } else {
+      isInViewport = true;
+      updateActivity();
+    }
+
+    document.addEventListener('visibilitychange', updateActivity);
 
     const onDown = (e: PointerEvent) => {
       s.dragging = true;
@@ -91,6 +129,7 @@ export function DragCarousel({
       const dt = Math.max(1, now - s.lastT);
       s.offset += dx;
       s.velocity = -(dx / dt) * 14;
+      renderTrack();
       s.lastX = e.clientX;
       s.lastT = now;
     };
@@ -114,6 +153,8 @@ export function DragCarousel({
     return () => {
       cancelAnimationFrame(s.raf);
       ro.disconnect();
+      io?.disconnect();
+      document.removeEventListener('visibilitychange', updateActivity);
       wrap.removeEventListener('pointerdown', onDown);
       wrap.removeEventListener('pointermove', onMove);
       wrap.removeEventListener('pointerup', onUp);

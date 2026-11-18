@@ -67,10 +67,10 @@ const pillars: Pillar[] = [
     title: { id: 'Performa & Keahlian', en: 'Performance & Craft' },
     span: 'md:col-span-2',
     body: {
-      id: 'Setiap proyek dirilis dengan anggaran performa. Core Web Vitals diukur, bukan diasumsikan. Animasi ramah GPU dan sadar reduced-motion.',
-      en: 'Every project ships with a performance budget. Core Web Vitals are measured, not assumed. Animations are GPU-friendly and reduced-motion aware.',
+      id: 'Perhatian pada performa web dan aksesibilitas, termasuk animasi yang menghormati pengaturan reduced-motion.',
+      en: 'A focus on web performance and accessibility, including animations that respect reduced-motion preferences.',
     },
-    items: ['Lighthouse 95+', 'Core Web Vitals', 'Accessibility', 'GSAP'],
+    items: ['Performance Budgets', 'Core Web Vitals', 'Accessibility', 'GSAP'],
   },
 ];
 

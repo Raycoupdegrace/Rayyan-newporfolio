@@ -8,7 +8,7 @@ export type Language = 'id' | 'en';
 export type TranslationShape = {
   nav: { home: string; about: string; expertise: string; experience: string; projects: string; achievements: string; contact: string };
   hero: { availability: string; role: string; exploreWork: string; startProject: string };
-  stats: { experience: string; projects: string; certifications: string; lighthouse: string };
+  stats: { experience: string; projects: string; certifications: string; languages: string };
   projects: { eyebrow: string; title: string; description: string };
   achievements: { eyebrow: string; title: string; description: string; certificationsTitle: string; certificationsHint: string; openToOpportunities: string; opportunitiesDesc: string; availability: string };
   about: { eyebrow: string; title: string; description: string; p1: string; p2: string; p3: string; focusAreas: string; basedIn: string; availability: string; educationTitle: string; educationHint: string };
@@ -30,7 +30,7 @@ export const translations: Record<Language, TranslationShape> = {
       exploreWork: 'Lihat Karya',
       startProject: 'Mulai Proyek',
     },
-    stats: { experience: 'Pengalaman', projects: 'Proyek', certifications: 'Sertifikasi', lighthouse: 'Lighthouse' },
+    stats: { experience: 'Pengalaman', projects: 'Proyek', certifications: 'Sertifikasi', languages: 'Bahasa' },
     projects: {
       eyebrow: 'Proyek',
       title: 'Karya terpilih dari sekolah & magang.',
@@ -119,7 +119,7 @@ export const translations: Record<Language, TranslationShape> = {
       exploreWork: 'Explore the work',
       startProject: 'Start a project',
     },
-    stats: { experience: 'Experience', projects: 'Projects', certifications: 'Certifications', lighthouse: 'Lighthouse' },
+    stats: { experience: 'Experience', projects: 'Projects', certifications: 'Certifications', languages: 'Languages' },
     projects: {
       eyebrow: 'Projects',
       title: 'Selected work from school & internship.',

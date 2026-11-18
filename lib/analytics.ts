@@ -1,8 +1,7 @@
 /**
  * Optional, consent-free first-party pageview beacon.
- * No external trackers are loaded by default — the project ships zero third-party
- * analytics so Lighthouse performance stays above 95. Point NEXT_PUBLIC_ANALYTICS_URL
- * at your own endpoint if you want real numbers.
+ * No external analytics service is contacted unless explicitly configured.
+ * Point NEXT_PUBLIC_ANALYTICS_URL at your own endpoint if you want pageview data.
  */
 export function pageview(): void {
   if (typeof window === 'undefined') return;

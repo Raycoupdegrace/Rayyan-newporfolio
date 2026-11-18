@@ -48,7 +48,7 @@ export const stats = [
   { labelKey: 'experience', value: 1, suffix: { id: '+ Tahun', en: '+ Year' } },
   { labelKey: 'projects', value: 6, suffix: { id: '+', en: '+' } },
   { labelKey: 'certifications', value: 3, suffix: { id: '', en: '' } },
-  { labelKey: 'lighthouse', value: 96, suffix: { id: '', en: '' } },
+  { labelKey: 'languages', value: 2, suffix: { id: '', en: '' } },
 ] as const;
 
 export const principles = [
@@ -68,8 +68,8 @@ export const principles = [
       en: 'Performance is a feature',
     },
     body: {
-      id: 'Cepat itu dirancang, bukan ditempel belakangan. Setiap proyek dirilis dengan anggaran performa dan baseline Core Web Vitals.',
-      en: 'Fast is designed, not bolted on. Every project ships with a performance budget and a Core Web Vitals baseline.',
+      id: 'Performa dipikirkan sejak awal, mulai dari ukuran aset hingga kenyamanan menjelajah di berbagai perangkat.',
+      en: 'Performance is considered from the start, from asset sizes to a smooth browsing experience across devices.',
     },
   },
   {
