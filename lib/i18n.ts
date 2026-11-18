@@ -14,7 +14,7 @@ export type TranslationShape = {
   about: { eyebrow: string; title: string; description: string; p1: string; p2: string; p3: string; focusAreas: string; basedIn: string; availability: string; educationTitle: string; educationHint: string };
   expertise: { eyebrow: string; title: string; description: string; coreStack: string; stackHint: string };
   experience: { eyebrow: string; title: string; description: string };
-  contact: { eyebrow: string; title: string; description: string; whatToInclude: string; include1: string; include2: string; include3: string; name: string; namePlaceholder: string; email: string; emailPlaceholder: string; message: string; messagePlaceholder: string; send: string; sending: string; success: string; error: string };
+  contact: { eyebrow: string; title: string; description: string; whatToInclude: string; include1: string; include2: string; include3: string; name: string; namePlaceholder: string; email: string; emailPlaceholder: string; message: string; messagePlaceholder: string; send: string; sending: string; success: string; emailReady: string; error: string };
   projectDetail: { back: string; heroMedia: string; p1: string; p2: string; techUsed: string; category: string; year: string; link: string };
   categories: { all: string; ecommerce: string; wordpress: string; application: string };
   siteRole: string;
@@ -88,6 +88,7 @@ export const translations: Record<Language, TranslationShape> = {
       send: 'Kirim pesan',
       sending: 'Mengirim...',
       success: 'Pesan terkirim. Saya akan membalas dalam 48 jam.',
+      emailReady: 'Aplikasi email terbuka dengan draf pesan. Tekan Kirim di aplikasi email untuk menyelesaikan.',
       error: 'Gagal mengirim. Silakan coba lagi.',
     },
     projectDetail: {
@@ -176,6 +177,7 @@ export const translations: Record<Language, TranslationShape> = {
       send: 'Send message',
       sending: 'Sending...',
       success: 'Message sent. I will get back to you within 48 hours.',
+      emailReady: 'Your email app opened with a draft. Send it from your email app to complete.',
       error: 'Failed to send. Please try again.',
     },
     projectDetail: {

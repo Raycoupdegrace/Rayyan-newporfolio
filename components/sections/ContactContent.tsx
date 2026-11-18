@@ -10,7 +10,7 @@ import { siteConfig } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
-type Status = 'idle' | 'submitting' | 'success' | 'error';
+type Status = 'idle' | 'success';
 
 export function ContactContent() {
   const { t } = useLanguage();
@@ -20,35 +20,21 @@ export function ContactContent() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus('submitting');
     setMessage('');
 
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries()) as Record<
-      string,
-      string
-    >;
+    const name = String(formData.get('name') ?? '').trim();
+    const email = String(formData.get('email') ?? '').trim();
+    const body = String(formData.get('message') ?? '').trim();
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const emailBody = encodeURIComponent(
+      `${body}\n\nFrom: ${name}\nEmail: ${email}`,
+    );
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const data = (await res.json()) as { error?: string };
-
-      if (!res.ok) {
-        throw new Error(data.error ?? c.error);
-      }
-
-      setStatus('success');
-      setMessage(c.success);
-      form.reset();
-    } catch (err) {
-      setStatus('error');
-      setMessage(err instanceof Error ? err.message : c.error);
-    }
+    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${emailBody}`;
+    setStatus('success');
+    setMessage(c.emailReady);
   };
 
   return (
@@ -167,10 +153,9 @@ export function ContactContent() {
               type="submit"
               variant="primary"
               size="lg"
-              disabled={status === 'submitting'}
               className="inline-flex items-center gap-2"
             >
-              {status === 'submitting' ? c.sending : c.send}
+              {c.send}
               <Send size={16} />
             </ButtonEl>
           </Magnetic>
