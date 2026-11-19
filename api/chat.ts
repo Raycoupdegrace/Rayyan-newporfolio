@@ -22,7 +22,7 @@ interface RateLimitEntry {
   resetAt: number;
 }
 
-const MODEL = 'gemini-3.8-flash';
+const MODEL = 'gemini-3.5-flash-lite';
 const RATE_LIMIT = 8;
 const RATE_WINDOW_MS = 60_000;
 const rateLimits = new Map<string, RateLimitEntry>();
